@@ -97,7 +97,7 @@ app.get('/auth/google/callback', function (req, res) {
                 const userEmail = me.data.emailAddresses[0].value;
                 const name = userEmail.split('@')[0];
                 if(method === 'register'){
-                    request.post('http://localhost:5000/register/googleAfterAuth', {
+                    request.post('https://fierce-bastion-22088.herokuapp.com/register/googleAfterAuth', {
                       json: {
                         "email" : userEmail,
                         "name" : name,
