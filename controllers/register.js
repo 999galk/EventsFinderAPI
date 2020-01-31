@@ -32,7 +32,7 @@ const handleRegister = (req,res,db,bcrypt,method, request) => {
 		})
 		.then(trx.commit)
 		.catch(trx.rollback)
-	}).catch(err => res.status(400).json('error',err));
+	}).catch(err => res.status(400).json(err));
 
 }
 
