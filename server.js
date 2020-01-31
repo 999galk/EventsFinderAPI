@@ -19,6 +19,8 @@ const CLIENT_SECRET = OAuth2Data.web.client_secret;
 const REDIRECT_URL = OAuth2Data.web.redirect_uris[0];
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 const db = knex({
   client: 'pg',
   connection: {
