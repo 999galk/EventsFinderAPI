@@ -27,7 +27,8 @@ const handleRegister = (req,res,db,bcrypt,method, request) => {
 				email: loginEmail[0],
 				joined : new Date()
 			}).then(user => {
-				res.status(200).json((user[0]).toString());
+				console.log(user[0]);
+				res.json(user[0]);
 			}).catch(err => console.log('error writing to DB:', err))
 		})
 		.then(trx.commit)
