@@ -117,13 +117,13 @@ app.get('/auth/google/callback', function (req, res) {
                     db.select('*').from('users').where('email', '=', userEmail).then(user => {
                         if(user[0].id){
                             console.log(user);
-                             res.redirect('http://localhost:3000/profile/' + user[0].id); 
+                             res.redirect('https://tripeventsfinder.herokuapp.com/profile/' + user[0].id); 
                          }
                     }).catch(err => res.status(400).json('user doesnt exist'))
                 }
 
                 function redirect(userId){
-                  res.redirect('http://localhost:3000/profile/' + userId);
+                  res.redirect('https://tripeventsfinder.herokuapp.com/profile/' + userId);
                 }
             }
         });
