@@ -117,13 +117,13 @@ app.get('/auth/google/callback', function (req, res) {
                     db.select('*').from('users').where('email', '=', userEmail).then(user => {
                         if(user[0].id){
                             console.log(user);
-                             res.redirect('https://tripeventsfinder.herokuapp.com/profile/' + user[0].id); 
+                             res.redirect('https://dreamy-bell-bb05ae.netlify.com/profile/' + user[0].id); 
                          }
                     }).catch(err => res.status(400).json('user doesnt exist'))
                 }
 
                 function redirect(userId){
-                  res.redirect('https://tripeventsfinder.herokuapp.com/profile/' + userId);
+                  res.redirect('https://dreamy-bell-bb05ae.netlify.com/profile/' + userId);
                 }
             }
         });
