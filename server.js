@@ -117,7 +117,7 @@ app.get('/auth/google/callback', function (req, res) {
                     db.select('*').from('users').where('email', '=', userEmail).then(user => {
                         if(user[0].id){
                             console.log(user);
-                             res.redirect('https://dreamy-bell-bb05ae.netlify.com/?profile=' + user[0].id); 
+                             res.redirect('https://tripeventsfinder.netlify.com/?profile=' + user[0].id); 
                              //res.json(user[0].id);
                              //request.get('http://google.com/img.png')
                          }
@@ -125,7 +125,7 @@ app.get('/auth/google/callback', function (req, res) {
                 }
 
                 function redirect(userId){
-                  res.redirect('https://dreamy-bell-bb05ae.netlify.com?/profile=' + userId);
+                  res.redirect('https://tripeventsfinder.netlify.com/?profile=' + userId);
                   res.json(userId);
                 }
             }
