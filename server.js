@@ -144,10 +144,10 @@ app.get('/auth/google/callback', function (req, res) {
     }
 });
 
-// app.listen(process.env.PORT || 5000, () => {
-// 	console.log(`server is running on port ${process.env.PORT}`);
-// })
-
-app.listen(5000, () => {
-    console.log(`server is running on port ${process.env.PORT}`);
+app.listen(process.env.PORT || 5000, () => {
+	console.log(`server is running on port ${process.env.PORT}`);
 })
+
+// app.listen(5000, () => {
+//     console.log(`server is running on port ${process.env.PORT}`);
+// })
