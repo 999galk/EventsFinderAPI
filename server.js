@@ -20,23 +20,23 @@ const REDIRECT_URL = OAuth2Data.web.redirect_uris[0];
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 
 
-// const db = knex({
-//   client: 'pg',
-//   connection: {
-//   	connectionString : process.env.DATABASE_URL,
-//   	ssl  : true,
-//   }
-// });
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
-    port : 5432,
-    user : '',
-    password : '',
-    database : 'FaceRecoDB'
+  	connectionString : process.env.DATABASE_URL,
+  	ssl  : true,
   }
 });
+// const db = knex({
+//   client: 'pg',
+//   connection: {
+//     host : '127.0.0.1',
+//     port : 5432,
+//     user : '',
+//     password : '',
+//     database : 'FaceRecoDB'
+//   }
+// });
 
 console.log('database url is:', process.env.DATABASE_URL);
 
