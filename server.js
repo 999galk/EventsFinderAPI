@@ -19,24 +19,15 @@ const CLIENT_SECRET = OAuth2Data.web.client_secret;
 const REDIRECT_URL = OAuth2Data.web.redirect_uris[0];
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 
+//process.env.NODE_TLS_REJECT_UNAUTHORIZED = "1";
 
 const db = knex({
   client: 'pg',
   connection: {
-  	connectionString : process.env.DATABASE_URL,
-  	ssl  : true,
+    connectionString : process.env.DATABASE_URL,
+    ssl  : true,
   }
 });
-// const db = knex({
-//   client: 'pg',
-//   connection: {
-//     host : '127.0.0.1',
-//     port : 5432,
-//     user : '',
-//     password : '',
-//     database : 'FaceRecoDB'
-//   }
-// });
 
 console.log('database url is:', process.env.DATABASE_URL);
 
@@ -45,11 +36,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req,res) => {
-	 res.send('working');
+     res.send('working');
 })
 
 app.post('/signin', (req,res) => {
-	 signin.handleSignin(req,res,db,bcrypt);
+     signin.handleSignin(req,res,db,bcrypt);
 })
 
 app.post('/register/:method', (req,res) => {
@@ -126,8 +117,7 @@ app.get('/auth/google/callback', function (req, res) {
                     db.select('*').from('users').where('email', '=', userEmail).then(user => {
                         if(user[0].id){
                             console.log(user);
-                             // res.redirect('https://tripeventsfinder.netlify.com/?profile=' + user[0].id); 
-                             res.redirect('https://tripeventsfinder.netlify.com/'); 
+                             res.redirect('https://tripeventsfinder.netlify.com/?profile=' + user[0].id); 
                              //res.json(user[0].id);
                              //request.get('http://google.com/img.png')
                          }
@@ -135,8 +125,7 @@ app.get('/auth/google/callback', function (req, res) {
                 }
 
                 function redirect(userId){
-                  // res.redirect('https://tripeventsfinder.netlify.com/?profile=' + userId);
-                  res.redirect('https://tripeventsfinder.netlify.com/');
+                  res.redirect('https://tripeventsfinder.netlify.com/?profile=' + userId);
                   res.json(userId);
                 }
             }
@@ -145,9 +134,5 @@ app.get('/auth/google/callback', function (req, res) {
 });
 
 app.listen(process.env.PORT || 5000, () => {
-	console.log(`server is running on port ${process.env.PORT}`);
+    console.log(`server is running on port ${process.env.PORT}`);
 })
-
-// app.listen(5000, () => {
-//     console.log(`server is running on port ${process.env.PORT}`);
-// })
